@@ -1,11 +1,11 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RedisClientWrapperService } from '../redis-client-wrapper.service';
-import { RedisConfigService } from '../redis-config.service';
+import { RedisClientWrapperService } from './redis-client-wrapper.service';
+import { RedisConfigService } from './redis-config.service';
 import { createClient, RedisClientType } from 'redis';
-import { RedisKey } from '../redis-key.enum';
-import { FailedToIncreaseByException } from './failed-to-increase-by.exception';
-import { FailedToGetValueException } from './failed-to-get-value.exception';
-import { CountIsNotANumberException } from './count-is-not-a-number.exception';
+import { RedisKey } from './redis-key.enum';
+import { FailedToIncreaseByException } from './exception/failed-to-increase-by.exception';
+import { FailedToGetValueException } from './exception/failed-to-get-value.exception';
+import { CountIsNotANumberException } from './exception/count-is-not-a-number.exception';
 
 jest.mock('redis', () => ({
   createClient: jest.fn(),
