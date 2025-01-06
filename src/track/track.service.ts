@@ -24,7 +24,7 @@ export class TrackService {
   }
 
   async incrementCount(trackRequestDto: TrackRequestDto): Promise<void> {
-    if (typeof trackRequestDto.count === 'number') {
+    if (trackRequestDto.count !== null) {
       await this.countStorage.incrementCount(trackRequestDto.count);
     }
   }

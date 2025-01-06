@@ -3,9 +3,9 @@ import { z } from 'zod';
 export const TrackRequestSchema = z
   .object({
     id: z.number(),
-    count: z.number().nullable().optional(),
-    content: z.string().optional(),
-    whatever: z.string().nullable(),
+    count: z.number().nullable().optional().default(null),
+    content: z.string().optional().default(''),
+    whatever: z.string().nullable().default(null),
   })
   .strict();
 

@@ -38,6 +38,7 @@ describe('TrackController', () => {
         id: 1,
         count: 42,
         content: 'test content',
+        whatever: null,
       };
 
       await controller.trackRequest(trackRequestDto);

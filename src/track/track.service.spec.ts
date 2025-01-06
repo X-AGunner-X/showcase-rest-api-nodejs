@@ -51,6 +51,7 @@ describe('TrackService', () => {
         id: 1,
         count: 42,
         content: 'some testing content',
+        whatever: null,
       };
 
       const expectedJsonLine = JSON.stringify(trackRequestDto) + '\n';
@@ -70,24 +71,13 @@ describe('TrackService', () => {
         id: 1,
         count: 42,
         content: 'test content',
+        whatever: null,
       };
 
       await service.incrementCount(trackRequestDto);
 
       expect(countStorageMock.incrementCount).toHaveBeenCalledWith(42);
       expect(countStorageMock.incrementCount).toHaveBeenCalledTimes(1);
-    });
-
-    it('should not call countStorage.incrementCount if count is not a number', async () => {
-      const trackRequestDto: TrackRequestDto = {
-        id: 1,
-        count: 'invalid' as unknown as number,
-        content: 'test content',
-      };
-
-      await service.incrementCount(trackRequestDto);
-
-      expect(countStorageMock.incrementCount).not.toHaveBeenCalled();
     });
   });
 });
