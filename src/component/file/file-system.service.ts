@@ -7,7 +7,7 @@ import { RequestContentStorage } from '../../track/request-content-storage.inter
 import { DirectoryLocationService } from '../directory-location/directory-location.service';
 
 @Injectable()
-export class FileService implements RequestContentStorage {
+export class FileSystemService implements RequestContentStorage {
   constructor(readonly directoryLocationService: DirectoryLocationService) {}
 
   async append(content: string): Promise<void> {

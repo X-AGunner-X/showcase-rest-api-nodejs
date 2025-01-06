@@ -6,7 +6,7 @@ import { RedisModule } from '../component/redis/redis.module';
 import { RedisClientWrapperService } from '../component/redis/redis-client-wrapper.service';
 import { INCREMENT_COUNT_STORAGE } from './increment-count-storage.interface';
 import { REQUEST_CONTENT_STORAGE } from './request-content-storage.interface';
-import { FileService } from '../component/file/file.service';
+import { FileSystemService } from '../component/file/file-system.service';
 
 @Module({
   controllers: [TrackController],
@@ -18,7 +18,7 @@ import { FileService } from '../component/file/file.service';
     },
     {
       provide: REQUEST_CONTENT_STORAGE,
-      useClass: FileService,
+      useClass: FileSystemService,
     },
   ],
   imports: [FileModule, RedisModule],

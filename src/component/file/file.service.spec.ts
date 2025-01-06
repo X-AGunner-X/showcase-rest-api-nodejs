@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { FileService } from './file.service';
+import { FileSystemService } from './file-system.service';
 import { appendFile, mkdir } from 'fs/promises';
 import { DirectoryNotExistException } from './exception/directory-not-exist.exception';
 import { UnableToAppendToFileException } from './exception/unable-to-append-to-file.exception';
@@ -9,7 +9,7 @@ import * as path from 'node:path';
 jest.mock('fs/promises');
 
 describe('FileService', () => {
-  let service: FileService;
+  let service: FileSystemService;
   let directoryLocationServiceMock: Partial<DirectoryLocationService>;
 
   const mkdirMock = mkdir as jest.Mock;
@@ -22,7 +22,7 @@ describe('FileService', () => {
 
     const module: TestingModule = await Test.createTestingModule({
       providers: [
-        FileService,
+        FileSystemService,
         {
           provide: DirectoryLocationService,
           useValue: directoryLocationServiceMock,
@@ -30,7 +30,7 @@ describe('FileService', () => {
       ],
     }).compile();
 
-    service = module.get<FileService>(FileService);
+    service = module.get<FileSystemService>(FileSystemService);
 
     jest.clearAllMocks();
   });
