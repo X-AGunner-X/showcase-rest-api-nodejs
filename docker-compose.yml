@@ -4,6 +4,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      args:
+        - SYSTEM_USER_UID=${SYSTEM_USER_UID:-1000}
+        - SYSTEM_GROUP_GID=${SYSTEM_GROUP_GID:-1000}
     container_name: i-billboard-node
     volumes:
       - .:/app

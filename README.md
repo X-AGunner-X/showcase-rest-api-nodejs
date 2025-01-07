@@ -25,7 +25,34 @@ apart from the above-mentioned requirements
 
 ## Local development
 
+### Configuration
+
+common configuration is in
+
+```
+.env.global
+```
+
+environmentally dependent configuration is set in `.env` file. You can start by copying `.env.dist` template.
+
+```
+cp .env.dist .env
+```
+
 ### Docker
+
+#### User UID and group GID
+
+If your system user is set to **UID=1000** and **GID=1000**, you can **skip** this section.
+
+In order to have correct folder permission, correct system user UID and group GID must be configured in `.env` file. 
+
+```
+SYSTEM_USER_UID=1000
+SYSTEM_GROUP_GID=1000
+```
+
+#### Building your containers
 
 build your docker containers in root folder of the project
 
@@ -53,22 +80,10 @@ docker-compose exec app sh
 nest g mo whatever-module
 ```
 
-### Configuration
-
-common configuration is in 
-
-    .env.global
-
-environmentally dependent configuration is set in .env.local. You can start by copying .env.local.dist template. 
-
-```
-cp .env.local.dist .env.local
-```
-
 ## Deployment to production
 
 - redis must not be set up in docker container on server. Failed container would cause data loss. Configure connection
-  to redis in `.env.local` file accordingly.
+  to redis in `.env` file accordingly.
 
 ## API
 

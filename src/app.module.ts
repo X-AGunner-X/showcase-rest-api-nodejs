@@ -13,7 +13,7 @@ import { CountModule } from './count/count.module';
   imports: [
     TrackModule,
     FileModule,
-    ConfigModule.forRoot({ envFilePath: ['.env.local', '.env.global'] }),
+    ConfigModule.forRoot({ envFilePath: ['.env', '.env.global'] }),
     DirectoryLocationModule,
     RedisModule,
     CountModule,
